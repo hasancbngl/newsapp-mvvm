@@ -6,6 +6,12 @@
         <entry key="app/src/main/res/drawable/ic_all_news.xml" value="0.2140625" />
         <entry key="app/src/main/res/drawable/ic_breaking_news.xml" value="0.2140625" />
         <entry key="app/src/main/res/drawable/ic_favorite.xml" value="0.2140625" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.14018691588785046" />
+        <entry key="app/src/main/res/layout/fragment_article.xml" value="0.14018691588785046" />
+        <entry key="app/src/main/res/layout/fragment_breaking_news.xml" value="0.14018691588785046" />
+        <entry key="app/src/main/res/layout/fragment_saved_news.xml" value="0.14018691588785046" />
+        <entry key="app/src/main/res/layout/fragment_search_news.xml" value="0.14018691588785046" />
+        <entry key="app/src/main/res/layout/item_article_preview.xml" value="0.33" />
       </map>
     </option>
   </component>
