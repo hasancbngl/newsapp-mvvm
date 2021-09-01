@@ -24,5 +24,6 @@ class NewsActivity : AppCompatActivity() {
         )?.findNavController()?.let {
             binding.bottomNavigationView.setupWithNavController(it)
         }
+
     }
 }
