@@ -9,12 +9,4 @@ import com.cobanogluhasan.news_app.R
 
 class SearchNewsFragment() : Fragment(R.layout.fragment_search_news) {
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)
-    }
-
 }
