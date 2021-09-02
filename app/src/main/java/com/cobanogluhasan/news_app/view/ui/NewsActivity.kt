@@ -1,17 +1,18 @@
 package com.cobanogluhasan.news_app.view.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.cobanogluhasan.news_app.R
+import com.cobanogluhasan.news_app.data.viewmodel.NewsViewModel
 import com.cobanogluhasan.news_app.databinding.ActivityNewsBinding
 
 class NewsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityNewsBinding
+    private val viewModel: NewsViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,5 +26,6 @@ class NewsActivity : AppCompatActivity() {
             binding.bottomNavigationView.setupWithNavController(it)
         }
 
+        viewModel.getBreakingNews("tr")
     }
 }
