@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.Target.SIZE_ORIGINAL
 import com.cobanogluhasan.model.Article
 import com.cobanogluhasan.news_app.databinding.ItemArticlePreviewBinding
 
@@ -28,7 +29,8 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
         RecyclerView.ViewHolder(binding.root) {
         fun bind(article: Article) {
             with(binding) {
-                Glide.with(root.context).load(article.url).into(ivArticleImage)
+                Glide.with(root.context).load(article.url)
+                    .centerCrop().into(ivArticleImage)
                 tvSource.text = article.source.name
                 tvTitle.text = article.title
                 tvDescription.text = article.description

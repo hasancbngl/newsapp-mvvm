@@ -4,14 +4,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.cobanogluhasan.model.NewsResponse
+import com.cobanogluhasan.news_app.data.db.ArticleDatabase
 import com.cobanogluhasan.news_app.data.repository.NewsRepository
 import com.cobanogluhasan.news_app.util.Resource
 import kotlinx.coroutines.launch
 import retrofit2.Response
 
-class NewsViewModel(
-    val repository: NewsRepository
-) : ViewModel() {
+class NewsViewModel(private val repository: NewsRepository) : ViewModel() {
+
     val breakingNewsData: MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
     var breakingNewsPage = 1
 

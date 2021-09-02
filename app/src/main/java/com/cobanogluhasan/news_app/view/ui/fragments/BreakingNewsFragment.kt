@@ -1,10 +1,10 @@
 package com.cobanogluhasan.news_app.view.ui.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,6 +20,7 @@ class BreakingNewsFragment() : Fragment() {
     private lateinit var binding: FragmentBreakingNewsBinding
     private val viewModel: NewsViewModel by activityViewModels()
     private lateinit var newsAdapter: NewsAdapter
+    private val TAG = "BreakingNewsFragment"
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,11 +35,25 @@ class BreakingNewsFragment() : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initRecycler()
+        observeLiveData()
+    }
+
+    private fun observeLiveData() {
         viewModel.breakingNewsData.observe(viewLifecycleOwner, { response ->
             when (response) {
                 is Resource.Success -> {
                     hideProgressBar()
+                    response.data?.let { newsResponse ->
+                        newsAdapter.differ.submitList(newsResponse.articles)
+                    }
                 }
+                is Resource.Error -> {
+                    hideProgressBar()
+                    response.message?.let { message ->
+                        Log.d(TAG, "onViewCreated: $message")
+                    }
+                }
+                is Resource.Loading -> showProgressBar()
             }
         })
     }
