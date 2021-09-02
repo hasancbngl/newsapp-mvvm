@@ -1,4 +1,4 @@
-package com.cobanogluhasan.news_app
+package com.cobanogluhasan.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -7,7 +7,6 @@ import androidx.room.PrimaryKey
     tableName = "articles"
 )
 data class Article(
-
     @PrimaryKey(autoGenerate = true)
     val id: Int? = null,
     val author: String,

@@ -1,4 +1,4 @@
-package com.cobanogluhasan.news_app
+package com.cobanogluhasan.model
 
 data class NewsResponse(
     val articles: List<Article>,
