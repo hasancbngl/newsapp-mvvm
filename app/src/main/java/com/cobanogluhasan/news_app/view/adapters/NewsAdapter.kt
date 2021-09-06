@@ -5,10 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.target.Target.SIZE_ORIGINAL
 import com.cobanogluhasan.model.Article
 import com.cobanogluhasan.news_app.databinding.ItemArticlePreviewBinding
+import com.squareup.picasso.Picasso
 
 class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
 
@@ -29,14 +28,13 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
         RecyclerView.ViewHolder(binding.root) {
         fun bind(article: Article) {
             with(binding) {
-                Glide.with(root.context).load(article.url)
-                    .centerCrop().into(ivArticleImage)
+                Picasso.get().load(article.url).into(ivArticleImage);
                 tvSource.text = article.source.name
                 tvTitle.text = article.title
                 tvDescription.text = article.description
                 tvPublishedAt.text = article.publishedAt
 
-                setOnItemClickListener {
+                binding.root.setOnClickListener {
                     onItemClickListener?.let { it(article) }
                 }
             }

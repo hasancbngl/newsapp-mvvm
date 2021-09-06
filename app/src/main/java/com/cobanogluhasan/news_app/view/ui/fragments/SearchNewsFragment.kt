@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cobanogluhasan.news_app.R
 import com.cobanogluhasan.news_app.data.viewmodel.NewsViewModel
@@ -57,6 +58,11 @@ class SearchNewsFragment() : Fragment() {
 
         initRecycler()
         observeLiveData()
+
+        newsAdapter.setOnItemClickListener {
+            val action = SearchNewsFragmentDirections.actionSearchNewsFragmentToArticlesFragment(it)
+            findNavController().navigate(action)
+        }
     }
 
     private fun initRecycler() {
