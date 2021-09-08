@@ -38,7 +38,6 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
         RecyclerView.ViewHolder(binding.root) {
         fun bind(article: Article) {
            binding.apply {
-               Log.i(TAG, "bind: ${article.url}")
                Glide.with(ivArticleImage.context).load(article.urlToImage)
                    .into(ivArticleImage)
 
