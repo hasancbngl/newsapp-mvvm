@@ -7,8 +7,16 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestListener
 import com.cobanogluhasan.model.Article
 import com.cobanogluhasan.news_app.databinding.ItemArticlePreviewBinding
+import android.graphics.drawable.Drawable
+import androidx.annotation.Nullable
+import com.bumptech.glide.load.DataSource
+
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.target.Target
+
 
 class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
 
@@ -31,7 +39,7 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
         fun bind(article: Article) {
            binding.apply {
                Log.i(TAG, "bind: ${article.url}")
-               Glide.with(ivArticleImage.context).load(article.url)
+               Glide.with(ivArticleImage.context).load(article.urlToImage)
                    .into(ivArticleImage)
 
                 tvSource.text = article.source.name
