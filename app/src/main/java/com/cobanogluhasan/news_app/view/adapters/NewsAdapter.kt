@@ -1,16 +1,18 @@
 package com.cobanogluhasan.news_app.view.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.cobanogluhasan.model.Article
 import com.cobanogluhasan.news_app.databinding.ItemArticlePreviewBinding
-import com.squareup.picasso.Picasso
 
 class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
 
+    private val TAG = "NewsAdapter"
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder = ViewHolder(
         ItemArticlePreviewBinding.inflate(
             LayoutInflater.from(parent.context),
@@ -27,8 +29,11 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
     inner class ViewHolder(private val binding: ItemArticlePreviewBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(article: Article) {
-            with(binding) {
-                Picasso.get().load(article.url).into(ivArticleImage);
+           binding.apply {
+               Log.i(TAG, "bind: ${article.url}")
+               Glide.with(ivArticleImage.context).load(article.url)
+                   .into(ivArticleImage)
+
                 tvSource.text = article.source.name
                 tvTitle.text = article.title
                 tvDescription.text = article.description
@@ -37,6 +42,7 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
                 binding.root.setOnClickListener {
                     onItemClickListener?.let { it(article) }
                 }
+
             }
         }
     }
