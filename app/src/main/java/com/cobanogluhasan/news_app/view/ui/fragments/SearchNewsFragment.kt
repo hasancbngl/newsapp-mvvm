@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AbsListView
+import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -94,6 +95,11 @@ class SearchNewsFragment() : Fragment() {
                     hideProgressBar()
                     response.message?.let { message ->
                         Log.d(TAG, "onViewCreated: $message")
+                        Toast.makeText(
+                            requireContext(),
+                            "An Error Occured! $message",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
                 is Resource.Loading -> showProgressBar()
